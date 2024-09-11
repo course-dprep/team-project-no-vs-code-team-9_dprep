@@ -1,0 +1,249 @@
+---
+title: "Team project"
+author: "Team 9"
+date: "2024-09-04"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.imdbws.com/title.ratings.tsv.gz')
+
+datasets <- lapply(urls, read_delim, delim='\t', na = '\\N')
+episode <- datasets[[1]]
+ratings = datasets[[2]]
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+## Research question
+#What factors most strongly influence the title’s viewer engagement (e.g. votes, ratings)?
+# 2. Data preparation & analysis
+## 2.1 Data exploration
+
+#This section explores the IMDb datasets and provide an overview of the datasets, the definitions of the variables and figures.
+```
+
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(stringr)
+library(car)
+library(data.table)
+library(readxl)
+setwd("D:/UNI/MASTER/dprep")
+
+```
+```{r, cache=TRUE}
+title_episode <- read_tsv("title.episode.tsv.gz", n_max = 1000)
+title_basics <- read_tsv("title.basics.tsv.gz", n_max = 1000)
+title_ratings <- read_tsv("title.ratings.tsv.gz", n_max = 1000)
+title_crew <- read_tsv("title.crew.tsv.gz", n_max = 1000)
+name_basics <- read_tsv("name.basics.tsv.gz", n_max = 1000)
+title_akas <- read_tsv("title.akas.tsv.gz", n_max = 1000)
+
+```
+```{r}
+# Replace \N with NA in the dataset
+title_episode <- title_episode %>%
+  mutate_all(~ na_if(., "\\N"))
+
+title_crew <- title_crew %>%
+  mutate_all(~ na_if(., "\\N"))
+
+name_basics <- name_basics %>%
+  mutate_all(~ na_if(., "\\N"))
+
+
+```
+
+
+
+
+```{r, echo=FALSE}
+# The 'title.episode' dataset
+str(title_episode)
+summary(title_episode)
+knitr::kable(head(title_episode), caption = "First few rows of 'title.episode' dataset", escape = TRUE)
+
+```
+
+
+```{r, echo=FALSE}
+# Variable Definitions for 'title.episode'
+knitr::kable(
+  data.frame(
+    Variable = c("tconst", "parentTconst", "seasonNumber", "episodeNumber"),
+    Definition = c("Unique identifier for the title", 
+                   "Identifier of the parent title (e.g., the series for an episode)", 
+                   "Season number of the episode", 
+                   "Episode number in the season")
+  ),
+  caption = "Variable Definitions for 'title.episode' Dataset", escape = TRUE
+)
+
+```
+
+
+```{r, echo=FALSE}
+# The 'title.basics' dataset
+str(title_basics)
+summary(title_basics)
+knitr::kable(head(title_basics), caption = "First few rows of 'title.basics' dataset", escape = TRUE)
+
+```
+
+
+
+
+```{r, echo=FALSE}
+# Variable Definitions for 'title.basics'
+knitr::kable(
+  data.frame(
+    Variable = c("tconst", "titleType", "primaryTitle", "originalTitle", "isAdult", "startYear", "endYear", "runtimeMinutes", "genres"),
+    Definition = c("Unique identifier for the title", 
+                   "Type of the title (e.g., movie, short, TV episode)", 
+                   "Primary title of the work", 
+                   "Original title of the work", 
+                   "Adult content flag (0: non-adult, 1: adult)", 
+                   "Release year or start year for series", 
+                   "End year for series", 
+                   "Runtime in minutes", 
+                   "Genres associated with the title")
+  ),
+  caption = "Variable Definitions for 'title.basics' Dataset", escape = TRUE
+)
+```
+
+
+```{r}
+#Count of Documentaries
+
+setDT(title_basics)
+title_basics[, Documentary := ifelse(str_detect(genres, "Documentary"), 1, 0)]
+
+
+ggplot(title_basics[!is.na(Documentary)], aes(x=as.factor(Documentary)))+geom_bar()
+```
+
+
+```{r, echo=FALSE}
+# The 'title.ratings' dataset
+str(title_ratings)
+summary(title_ratings)
+knitr::kable(head(title_ratings), caption = "First few rows of 'title.ratings' dataset", escape = TRUE)
+
+```
+
+
+
+```{r, echo=FALSE}
+# Variable Definitions for 'title.ratings'
+knitr::kable(
+  data.frame(
+    Variable = c("tconst", "averageRating", "numVotes"),
+    Definition = c("Unique identifier for the title", 
+                   "Average rating of the title", 
+                   "Number of votes received for the title")
+  ),
+  caption = "Variable Definitions for 'title.ratings' Dataset", escape = TRUE
+)
+```
+
+```{r, echo=FALSE}
+# Boxplot of the average ratings
+boxplot(title_ratings$averageRating)
+```
+
+
+
+```{r, echo=FALSE}
+# The 'title.crew' dataset
+str(title_crew)
+summary(title_crew)
+knitr::kable(head(title_crew), caption = "First few rows of 'title.crew' dataset", escape = TRUE)
+
+```
+
+
+
+```{r, echo=FALSE}
+# Variable Definitions for 'title.crew'
+knitr::kable(
+  data.frame(
+    Variable = c("tconst", "directors", "writers"),
+    Definition = c("Unique identifier for the title", 
+                   "List of director IDs associated with the title", 
+                   "List of writer IDs associated with the title")
+  ),
+  caption = "Variable Definitions for 'title.crew' Dataset", escape = TRUE
+)
+```
+
+
+```{r, echo=FALSE}
+# The 'name.basics' dataset
+str(name_basics)
+summary(name_basics)
+knitr::kable(head(name_basics), caption = "First few rows of 'name.basics' dataset", escape = TRUE)
+
+```
+
+
+
+```{r, echo=FALSE}
+# Variable Definitions for 'name.basics'
+knitr::kable(
+  data.frame(
+    Variable = c("nconst", "primaryName", "birthYear", "deathYear", 
+                 "primaryProfession", "knownForTitles"),
+    Definition = c("Unique identifier for the name", 
+                   "Name of the person", 
+                   "Year of birth", 
+                   "Year of death", 
+                   "Primary profession(s) of the person (e.g., actor, director)", 
+                   "List of titles the person is known for")
+  ),
+  caption = "Variable Definitions for 'name.basics' Dataset", escape = TRUE
+)
+```
+
+
+```{r, echo=FALSE}
+# The 'title.akas' dataset
+str(title_akas)
+summary(title_akas)
+knitr::kable(head(title_akas), caption = "First few rows of 'title.akas' dataset", escape = TRUE)
+
+```
+
+
+```{r, echo=FALSE}
+# Variable Definitions for 'title.akas'
+knitr::kable(
+  data.frame(
+    Variable = c("titleId", "ordering", "title", "region", "language", 
+                 "types", "attributes", "isOriginalTitle"),
+    Definition = c("Unique identifier for the title", 
+                   "A number to uniquely identify rows for a title", 
+                   "The title in the language specified", 
+                   "The region for this version of the title", 
+                   "Language of the title", 
+                   "Type of the title (e.g., DVD title, festival title)", 
+                   "Additional attributes (e.g., working title)", 
+                   "Flag for original title (1: true, 0: false)")
+  ),
+  caption = "Variable Definitions for 'title.akas' Dataset", escape = TRUE
+)
+```
