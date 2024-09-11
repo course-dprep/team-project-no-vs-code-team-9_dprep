@@ -10,7 +10,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.imdbws.com/title.ratings.tsv.gz')
 
+datasets <- lapply(urls, read_delim, delim='\t', na = '\\N')
+episode <- datasets[[1]]
+ratings = datasets[[2]]
 
 ```{r}
 ## Research question
