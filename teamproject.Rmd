@@ -18,7 +18,13 @@ ratings = datasets[[2]]
 
 ```{r}
 ## Research question
-#What factors most strongly influence the title’s viewer engagement (e.g. votes, ratings)?
+# Does the number of episodes significantly influence the ratings of TV shows?
+
+## Research Motivation
+# This research question is relevant because it allows filmmakers and marketers to understand the key factors influencing TV shows ratings, leading to a better benchmarking and decision-making in their marketing strategies. With this information, filmmakers can make better decisions in the number of episodes they are producing. Furthermore, IMDb can improve its recommendation system, offering more personalized movie recommendations, making it easier for users to find movies they will enjoy.
+
+The appropriate method for this research is a multiple regression analysis. The multiple regression analysis shows how several independent variables influence the dependent variable. Additionally the multiple regression is convenient to interpret. With this type of analysis it can be determined how much each independent variable influences the dependent variable ratings and which independent variable influences the ratings most significantly.
+
 # 2. Data preparation & analysis
 ## 2.1 Data exploration
 
