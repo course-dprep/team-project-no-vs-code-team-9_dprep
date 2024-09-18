@@ -92,6 +92,7 @@ knitr::kable(
                    "Identifier of the parent title (e.g., the series for an episode)", 
                    "Season number of the episode", 
                    "Episode number in the seasons")
+
   ),
   caption = "Variable Definitions for 'title.episode' Dataset", escape = TRUE
 )
