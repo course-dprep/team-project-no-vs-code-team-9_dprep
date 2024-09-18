@@ -1,7 +1,15 @@
 # Name of project
 
-# Table of contents
-## Introduction
-## Research motivation
+#Introduction
+### Contributors
+| Author                                      |
+|---------------------------------------------|
+| **Kanaya Hendra**                           |
+| **Owen van Lith**                           | 
+| **Lam Nguyen**                              |
+| **Pepijn Kars**                             |
+| **Jason Ye**                                |
 
-# Stuff
+### Research Motivation
+
+
