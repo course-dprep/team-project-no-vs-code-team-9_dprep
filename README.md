@@ -41,7 +41,8 @@ Does the number of episodes significantly influence the ratings of TV shows?
 | Variable.      | Description                                           | Data Type   |
 |----------------|-------------------------------------------------------|-------------|
 | tconst         | Unique identifier for the title                       | numeric     |
-| titleType      | Type of the title (e.g., movie, short, TV episode)    | character   |
-| primaryTitle   | Primary title of the work                             | character   |
-| originalTitle  | Original title of the work                            | character   |
-| isAdult        | Adult content flag (0: non-adult, 1: adult)           | numeric     |
+| parentTconst   | Identifier of the parent title                        | character   |
+| seasonNumber   | Season number of the episode                          | character   |
+| episodeNumber  | Episode number in the seasons                         | numeric     |
+| averageRating  | Average rating of the title                           | numeric     |
+| numVotes       | Number of votes received for the title                | numeric     |
