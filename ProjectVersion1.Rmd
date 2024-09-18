@@ -6,11 +6,11 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE )
 ```
 
 
-```{r}
+```{r echo=False}
 library(readr)
 library(dplyr)
 library(ggplot2)
@@ -21,17 +21,20 @@ library(data.table)
 library(readxl)
 ```
 
-```{r}
-urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.imdbws.com/title.ratings.tsv.gz')
+```{r show_col_types = FALSE}
+urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.imdbws.com/title.ratings.tsv.gz', 'https://datasets.imdbws.com/title.episode.tsv.gz')
 
 datasets <- lapply(urls, read_delim, delim='\t', na = '\\N')
 episode <- datasets[[1]]
-ratings = datasets[[2]]
+ratings <- datasets[[2]]
+titles <- datasets[[3]]
 ```
+
 ```{r}
 str(episode)
 summary(episode)
 ```
+
 ```{r, echo=FALSE}
 # The 'title.ratings' dataset
 str(ratings)
