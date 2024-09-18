@@ -1,9 +1,5 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 # Evaluating the Impact of Episode Count on TV Show Ratings
+This project investigates whether there is a correlation between the number of episodes in a TV show and its IMDb rating, providing insights into how show length might influence audience perception.
 
 ### Contributors
 | Author                                      |
@@ -14,30 +10,25 @@ output:
 | **Pepijn Kars**                             |
 | **Jason Ye**                                |
 
-<<<<<<< HEAD
-### Research Motivation
-=======
+
 ## 1. Introduction
 ### 1.1 Research Motivation
-<<<<<<< HEAD
->>>>>>> 90de07209627f20a625e3f7a2aa1ef1b95816c37
-The research question is crucial because understanding the factors that drive viewer engagement can inform content creators, streaming platforms, and marketers. It can help in improving content strategies, optimizing recommendations, and enhancing user experience. Specifically, it focuses on identifying key variables (like genre, release year, cast, duration, etc.) that correlate strongly with viewer engagement metrics such as votes and ratings.
-=======
-The research question is crucial because understanding the factors that drive ratings of TV shows can inform content creators, streaming platforms, and marketers. It can help in improving content strategies, optimizing recommendations, and enhancing user experience. Specifically, it can provide insights into whether viewers prefer to binge-watch shorter series or if they are more invested in longer series, and thus suggesting the ideal number of episodes. 
->>>>>>> 8161c034583aa6acdc6540ef254ca743f0120f50
+With this research, we aim to explore the factors influencing TV show ratings to provide valuable insights for content creators, streaming platforms, and marketers. Understanding these factors can enhance content strategies, optimize recommendations, and improve user experience. Specifically, this research seeks to determine whether viewers prefer binge-watching shorter series or are more engaged with longer ones, suggesting an ideal number of episodes for a TV show.
 
 ### 1.2 Relevance 
-This research question is relevant because it allows filmmakers and marketers to understand the key factors influencing TV shows ratings, leading to a better benchmarking and decision-making in their marketing strategies. With this information, filmmakers can make better decisions in the number of episodes they are producing. Furthermore, IMDb can improve its recommendation system, offering more personalized movie recommendations, making it easier for users to find movies they will enjoy.
+This research is relevant because it allows filmmakers and marketers to understand the key factors influencing TV shows ratings, leading to a better benchmarking and decision-making in their marketing strategies. With this information, filmmakers can make better decisions in the number of episodes they are producing. Furthermore, IMDb can improve its recommendation system, offering more personalized movie recommendations, making it easier for users to find movies they will enjoy.
 
 ### 1.3 Research Question
 Does the number of episodes significantly influence the ratings of TV shows?
 
 ## 2. Method
 
-### 2.1 Research Method
+## 2.1 Data Source 
+To begin, we review all available datasets from IMDb's Non-Commercial Datasets to identify those that contain the necessary information for our research. Specifically, we focus on datasets that include TV show titles, identifiers, the number of episodes, and ratings.
 
+## 2.2 Variables
+Subsequently, we choose to work with the following variables:
 
-### 2.2 Variables
 | Variable.      | Description                                           | Data Type   |
 |----------------|-------------------------------------------------------|-------------|
 | tconst         | Unique identifier for the title                       | numeric     |
@@ -46,3 +37,10 @@ Does the number of episodes significantly influence the ratings of TV shows?
 | episodeNumber  | Episode number in the seasons                         | numeric     |
 | averageRating  | Average rating of the title                           | numeric     |
 | numVotes       | Number of votes received for the title                | numeric     |
+
+### 2.3 Research Method
+To explore these relationships, regression analysis will be used as the primary research method. This approach is ideal for quantifying the relationship between a dependent variable (TV show ratings) and an independent variable (number of episodes). By applying this method, we can measure how changes in the number of episodes impact ratings and determine the strength of this effect. Regression is especially well-suited for this research question because it reveals both the strength and direction of the relationship between the number of episodes and TV show ratings. It also strengthens the analysis by considering other variables, ensuring that the link between episode count and ratings isn’t influenced by unrelated factors.
+
+## Result
+
+
