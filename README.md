@@ -1,4 +1,4 @@
-# Name of project
+# Evaluating the Impact of Episode Count on TV Show Ratings
 
 #Introduction
 ### Contributors
