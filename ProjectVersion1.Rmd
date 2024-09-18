@@ -21,6 +21,7 @@ library(data.table)
 library(readxl)
 ```
 
+
 ```{r}
 urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.imdbws.com/title.ratings.tsv.gz','https://datasets.imdbws.com/title.basics.tsv.gz')
 
@@ -45,11 +46,14 @@ The appropriate method for this research is a multiple regression analysis. The 
 ```
 ```{r, echo=FALSE}
 # The 'episode' dataset
+
+```{r echo=FALSE}
 str(episode)
 summary(episode)
 knitr::kable(head(episode), caption = "First few rows of 'title.episode' dataset", escape = TRUE)
 
 ```
+
 ```{r, echo=FALSE}
 # Variable Definitions for 'episode'
 knitr::kable(
