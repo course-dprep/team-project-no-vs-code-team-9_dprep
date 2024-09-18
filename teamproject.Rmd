@@ -53,28 +53,6 @@ library(stringr)
 library(car)
 library(data.table)
 library(readxl)
-setwd("D:/UNI/MASTER/dprep")
-
-```
-```{r, cache=TRUE}
-title_episode <- read_tsv("title.episode.tsv.gz", n_max = 1000)
-title_basics <- read_tsv("title.basics.tsv.gz", n_max = 1000)
-title_ratings <- read_tsv("title.ratings.tsv.gz", n_max = 1000)
-title_crew <- read_tsv("title.crew.tsv.gz", n_max = 1000)
-name_basics <- read_tsv("name.basics.tsv.gz", n_max = 1000)
-title_akas <- read_tsv("title.akas.tsv.gz", n_max = 1000)
-
-```
-```{r}
-# Replace \N with NA in the dataset
-title_episode <- title_episode %>%
-  mutate_all(~ na_if(., "\\N"))
-
-title_crew <- title_crew %>%
-  mutate_all(~ na_if(., "\\N"))
-
-name_basics <- name_basics %>%
-  mutate_all(~ na_if(., "\\N"))
 
 
 ```
@@ -99,7 +77,8 @@ knitr::kable(
     Definition = c("Unique identifier for the title", 
                    "Identifier of the parent title (e.g., the series for an episode)", 
                    "Season number of the episode", 
-                   "Episode number in the seasonsssssssss")
+                   "Episode number in the seasons")
+
   ),
   caption = "Variable Definitions for 'title.episode' Dataset", escape = TRUE
 )
