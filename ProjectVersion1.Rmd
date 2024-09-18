@@ -10,7 +10,7 @@ knitr::opts_chunk$set(message = FALSE )
 ```
 
 
-```{r echo=False}
+```{r}
 library(readr)
 library(dplyr)
 library(ggplot2)

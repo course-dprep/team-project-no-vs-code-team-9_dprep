@@ -1,3 +1,7 @@
-#Name of project
-# test change in ReadMe 2
-#Table of contents
+# Name of project
+
+# Table of contents
+## Introduction
+## Research motivation
+
+# Stuff
