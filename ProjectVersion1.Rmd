@@ -30,7 +30,7 @@ ratings <- datasets[[2]]
 titles <- datasets[[3]]
 ```
 
-```{r}
+```{r echo=FALSE}
 str(episode)
 summary(episode)
 ```
