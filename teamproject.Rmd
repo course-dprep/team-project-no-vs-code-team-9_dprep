@@ -15,7 +15,7 @@ urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.i
 
 datasets <- lapply(urls, read_delim, delim='\t', na = '\\N')
 episode <- datasets[[1]]
-ratings = datasets[[2]]
+ratings=datasets[[2]]
 ```
 
 ```{r}
