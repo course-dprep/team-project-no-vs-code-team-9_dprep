@@ -1,5 +1,7 @@
-#Name of project
+# Name of project
 
-#Table of contents
-#1 Introduction
-#Research motivation
+# Table of contents
+## Introduction
+## Research motivation
+
+# Stuff
