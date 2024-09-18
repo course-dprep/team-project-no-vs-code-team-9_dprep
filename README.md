@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # Evaluating the Impact of Episode Count on TV Show Ratings
 
 ### Contributors
@@ -25,10 +30,10 @@ Does the number of episodes significantly influence the ratings of TV shows?
 
 
 ### 2.2 Variables
-| Variable.      | Description                                           |
-|----------------|-------------------------------------------------------|
-| tconst         | Unique identifier for the title                       | 
-| titleType      | Type of the title (e.g., movie, short, TV episode)    | 
-| primaryTitle   | Primary title of the work                             | 
-| originalTitle  | Original title of the work                            | 
-| isAdult        | Adult content flag (0: non-adult, 1: adult)           |
+| Variable.      | Description                                           | Data Type   |
+|----------------|-------------------------------------------------------|-------------|
+| tconst         | Unique identifier for the title                       | numeric     |
+| titleType      | Type of the title (e.g., movie, short, TV episode)    | character   |
+| primaryTitle   | Primary title of the work                             | character   |
+| originalTitle  | Original title of the work                            | character   |
+| isAdult        | Adult content flag (0: non-adult, 1: adult)           | numeric     |
