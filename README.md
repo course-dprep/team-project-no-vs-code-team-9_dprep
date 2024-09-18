@@ -19,9 +19,14 @@ This research question is relevant because it allows filmmakers and marketers to
 ### 1.3 Research Question
 Does the number of episodes significantly influence the ratings of TV shows?
 
-## 2 Method
+## 2. Method
 
 ### 2.1 Research Method
 
 ### 2.2 Variables
+| Variable    | Description                                           |
+|-------------|-------------------------------------------------------|
+| tconst      | Unique identifier for the title                       |
+| titleType   | Type of the title (e.g., movie, short, TV episode)    |
+
 
