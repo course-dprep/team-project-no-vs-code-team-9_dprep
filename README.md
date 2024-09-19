@@ -23,10 +23,10 @@ Does the number of episodes significantly influence the ratings of TV shows?
 
 ## 2. Method
 
-## 2.1 Data Source 
+### 2.1 Data Source 
 To begin, we review all available datasets from IMDb's Non-Commercial Datasets to identify those that contain the necessary information for our research. Specifically, we focus on datasets that include TV show titles, identifiers, the number of episodes, and ratings.
 
-## 2.2 Variables
+### 2.2 Variables
 Subsequently, we choose to work with the following variables:
 
 | Variable.      | Description                                           | Data Type   |
