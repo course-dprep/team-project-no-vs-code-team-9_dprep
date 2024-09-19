@@ -37,14 +37,24 @@ To begin, we review all available datasets from IMDb's Non-Commercial Datasets t
 ### 2.2 Variables
 Subsequently, we choose to work with the following variables:
 
-| Variable.      | Description                                           | Data Type   |
-|----------------|-------------------------------------------------------|-------------|
-| tconst         | Unique identifier for the title                       | numeric     |
-| parentTconst   | Identifier of the parent title                        | character   |
-| seasonNumber   | Season number of the episode                          | character   |
-| episodeNumber  | Episode number in the seasons                         | numeric     |
-| averageRating  | Average rating of the title                           | numeric     |
-| numVotes       | Number of votes received for the title                | numeric     |
+| Dataset       | Variable       | Description                                         |
+|---------------|----------------|-----------------------------------------------------|
+| title.episode | tconst         | identifier of episode                               |
+|               | parentTconst   | identifier of the parent TV Series                  |
+|               | seasonNumber   | season number the episode belongs to                |
+|               | episodeNumber  | episode number of the tconst in the TV series       |
+| title.ratings | tconst         | unique identifier of the title                      |
+|               | averageRating  | weighted average of all the individual user ratings |
+|               | numVotes       | number of votes the title has received              |
+| title.basics  | tconst         | unique identifier of the title                      |
+|               | titleType      | the type/format of the title                        |
+|               | primaryTitle   | the more popular title                              |
+|               | originalTitle  | original title, in the original language            |
+|               | isAdult        | 0: non-adult title; 1: adult title                  |
+|               | startYear      | the release year of a title                         |
+|               | endYear        | TV Series end year                                  |
+|               | runtimeMinutes | primary runtime of the title, in minutes            |
+|               | genres         | up to three genres associated with the title        |
 
 ### 2.3 Research Method
 To explore these relationships, regression analysis will be used as the primary research method. This approach is ideal for quantifying the relationship between a dependent variable (TV show ratings) and an independent variable (number of episodes). By applying this method, we can measure how changes in the number of episodes impact ratings and determine the strength of this effect. Regression is especially well-suited for this research question because it reveals both the strength and direction of the relationship between the number of episodes and TV show ratings. It also strengthens the analysis by considering other variables, ensuring that the link between episode count and ratings isn’t influenced by unrelated factors.
