@@ -10,7 +10,7 @@ knitr::opts_chunk$set(message = FALSE)
 ```
 
 
-```{r}
+```{r echo=FALSE, warning=FALSE, include = FALSE}
 library(readr)
 library(dplyr)
 library(ggplot2)
@@ -22,7 +22,9 @@ library(readxl)
 ```
 
 
-```{r}
+```{r warning=FALSE, include = FALSE}
+# Loading the datasets
+
 urls = c('https://datasets.imdbws.com/title.episode.tsv.gz', 'https://datasets.imdbws.com/title.ratings.tsv.gz','https://datasets.imdbws.com/title.basics.tsv.gz')
 
 datasets <- lapply(urls, read_delim, delim='\t', na = '\\N')
@@ -30,29 +32,37 @@ episode <- datasets[[1]]
 ratings = datasets[[2]]
 titles <- datasets[[3]]
 ```
-```{r}
-## Research question
-# Does the number of episodes significantly influence the ratings of TV shows?
+
+
+
+# Research question
+
+Does the number of episodes significantly influence the ratings of TV shows?
 
 ## Research Motivation
-# This research question is relevant because it allows filmmakers and marketers to understand the key factors influencing TV shows ratings, leading to a better benchmarking and decision-making in their marketing strategies. With this information, filmmakers can make better decisions in the number of episodes they are producing. Furthermore, IMDb can improve its recommendation system, offering more personalized movie recommendations, making it easier for users to find movies they will enjoy.
+
+This research question is relevant because it allows filmmakers and marketers to understand the key factors influencing TV shows ratings, leading to a better benchmarking and decision-making in their marketing strategies. With this information, filmmakers can make better decisions in the number of episodes they are producing. Furthermore, IMDb can improve its recommendation system, offering more personalized movie recommendations, making it easier for users to find movies they will enjoy.
 
 The appropriate method for this research is a multiple regression analysis. The multiple regression analysis shows how several independent variables influence the dependent variable. Additionally the multiple regression is convenient to interpret. With this type of analysis it can be determined how much each independent variable influences the dependent variable ratings and which independent variable influences the ratings most significantly.
 
 # 2. Data preparation & analysis
+
 ## 2.1 Data exploration
 
-#This section explores the IMDb datasets and provide an overview of the datasets, the definitions of the variables and figures.
+This section explores the IMDb datasets and provide an overview of the datasets, the definitions of the variables and figures.
 ```
-```{r, echo=FALSE}
-# The 'episode' dataset
 
-```{r echo=FALSE}
+
+```{r diagnostics, echo=FALSE, include = FALSE}
+#The 'episode' dataset
 str(episode)
 summary(episode)
-knitr::kable(head(episode), caption = "First few rows of 'title.episode' dataset", escape = TRUE)
-
 ```
+
+```{r table, echo=FALSE}
+knitr::kable(head(episode), caption = "First few rows of 'title.episode' dataset", escape = TRUE)
+```
+
 
 ```{r, echo=FALSE}
 # Variable Definitions for 'episode'
@@ -70,13 +80,17 @@ knitr::kable(
 
 ```
 
-```{r, echo=FALSE}
+```{r diagnostic2, echo=FALSE, include =FALSE}
 # The 'title.ratings' dataset
 str(ratings)
 summary(ratings)
-knitr::kable(head(ratings), caption = "First few rows of 'title.ratings' dataset", escape = TRUE)
-
 ```
+
+```{r table2, echo = FALSE}
+knitr::kable(head(ratings), caption = "First few rows of 'title.ratings' dataset", escape = TRUE)
+```
+
+
 ```{r, echo=FALSE}
 # Variable Definitions for 'title.ratings'
 knitr::kable(
@@ -89,19 +103,19 @@ knitr::kable(
   caption = "Variable Definitions for 'title.ratings' Dataset", escape = TRUE
 )
 ```
-```{r}
-# Boxplot of the average ratings
-boxplot(ratings$averageRating)
+```{r, echo = FALSE}
+boxplot(ratings$averageRating, main = "Boxplot of the average ratings")
 ```
 
-```{r, echo=FALSE}
+```{r diagnostic3, echo=FALSE, include=FALSE}
 # The 'title.basics' dataset
 str(titles)
 summary(titles)
-knitr::kable(head(titles), caption = "First few rows of 'titles' dataset", escape = TRUE)
-
 ```
 
+```{r table3, echo=FALSE}
+knitr::kable(head(titles), caption = "First few rows of 'titles' dataset", escape = TRUE)
+```
 
 
 
