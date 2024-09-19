@@ -18,6 +18,7 @@ This project investigates whether there is a correlation between the number of e
 ---
 
 ## 1. Introduction
+
 ### 1.1 Research Motivation
 With this research, we aim to explore the factors influencing TV show ratings to provide valuable insights for content creators, streaming platforms, and marketers. Understanding these factors can enhance content strategies, optimize recommendations, and improve user experience. Specifically, this research seeks to determine whether viewers prefer binge-watching shorter series or are more engaged with longer ones, suggesting an ideal number of episodes for a TV show.
 
@@ -55,6 +56,8 @@ Subsequently, we choose to work with the following variables:
 |               | endYear        | TV Series end year                                  |
 |               | runtimeMinutes | primary runtime of the title, in minutes            |
 |               | genres         | up to three genres associated with the title        |
+
+Access to the datasets at https://datasets.imdbws.com/ 
 
 ### 2.3 Research Method
 To explore these relationships, regression analysis will be used as the primary research method. This approach is ideal for quantifying the relationship between a dependent variable (TV show ratings) and an independent variable (number of episodes). By applying this method, we can measure how changes in the number of episodes impact ratings and determine the strength of this effect. Regression is especially well-suited for this research question because it reveals both the strength and direction of the relationship between the number of episodes and TV show ratings. It also strengthens the analysis by considering other variables, ensuring that the link between episode count and ratings isn’t influenced by unrelated factors.
