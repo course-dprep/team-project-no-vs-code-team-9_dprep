@@ -1,5 +1,7 @@
 # Evaluating the Impact of Number of Episode on TV Show Ratings
+![image](https://cdn.freebiesupply.com/images/large/2x/imdb-logo-transparent.png)
 
+---
 
 ### Overview
 This project investigates whether there is a correlation between the number of episodes in a TV show and its IMDb rating, providing insights into how show length might influence audience perception.
@@ -13,6 +15,7 @@ This project investigates whether there is a correlation between the number of e
 | **Pepijn Kars**                             |
 | **Jason Ye**                                |
 
+---
 
 ## 1. Introduction
 ### 1.1 Research Motivation
@@ -23,6 +26,8 @@ This research is relevant because it allows filmmakers and marketers to understa
 
 ### 1.3 Research Question
 Does the number of episodes significantly influence the ratings of TV shows?
+
+---
 
 ## 2. Method
 
@@ -44,6 +49,8 @@ Subsequently, we choose to work with the following variables:
 ### 2.3 Research Method
 To explore these relationships, regression analysis will be used as the primary research method. This approach is ideal for quantifying the relationship between a dependent variable (TV show ratings) and an independent variable (number of episodes). By applying this method, we can measure how changes in the number of episodes impact ratings and determine the strength of this effect. Regression is especially well-suited for this research question because it reveals both the strength and direction of the relationship between the number of episodes and TV show ratings. It also strengthens the analysis by considering other variables, ensuring that the link between episode count and ratings isn’t influenced by unrelated factors.
 
-## Result
+---
+
+## 3.Result
 
 
