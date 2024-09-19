@@ -7,13 +7,13 @@
 This project investigates whether there is a correlation between the number of episodes in a TV show and its IMDb rating, providing insights into how show length might influence audience perception.
 
 ### Contributors
-| Author                                      |
-|---------------------------------------------|
-| **Kanaya Hendra**                           |
-| **Owen van Lith**                           | 
-| **Lam Nguyen**                              |
-| **Pepijn Kars**                             |
-| **Jason Ye**                                |
+| Author                | Contact                                     |
+|-----------------------|---------------------------------------------|
+| **Kanaya Hendra**     | kanayalalityahendra@tilburguniversity.edu   |
+| **Owen van Lith**     | o.m.vanlith@tilburguniversity.edu           |
+| **Lam Nguyen**        | l.k.l.nguyen@tilburguniversity.edu          |
+| **Pepijn Kars**       | p.kars@tilburguniversity.edu                |
+| **Jason Ye**          | a.s.ye@tilburguniversity.edu                |
 
 ---
 
