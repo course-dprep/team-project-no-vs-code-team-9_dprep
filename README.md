@@ -30,7 +30,7 @@ Does the number of episodes significantly influence the ratings of TV shows?
 
 ---
 
-## 2. Method
+## 2. Method and results
 
 ### 2.1 Data Source 
 To begin, we review all available datasets from IMDb's Non-Commercial Datasets to identify those that contain the necessary information for our research. Specifically, we focus on datasets that include TV show titles, identifiers, the number of episodes, and ratings.
@@ -62,9 +62,15 @@ Access to the datasets at https://datasets.imdbws.com/
 ### 2.3 Research Method
 To explore these relationships, regression analysis will be used as the primary research method. This approach is ideal for quantifying the relationship between a dependent variable (TV show ratings) and an independent variable (number of episodes). By applying this method, we can measure how changes in the number of episodes impact ratings and determine the strength of this effect. Regression is especially well-suited for this research question because it reveals both the strength and direction of the relationship between the number of episodes and TV show ratings. It also strengthens the analysis by considering other variables, ensuring that the link between episode count and ratings isn’t influenced by unrelated factors.
 
+### Results
+
 ---
 
-## Requirements (not yet done)
+## Repository overview
+
+---
+
+## Running instructions (not yet done)
 This assingment requires R and Rstudio. This specific code was developed under R version 4.4.1. The software can be downloaded via the link: https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/ 
 
 ### Necessary libraries in R
@@ -78,17 +84,12 @@ library(stringr)
 library(car)
 library(data.table)
 library(readxl)
-
 ```
 ### Installing tinytex to knit the Rmarkdown
 
 ```
 install.packages('tinytex')
 tinytex::install_tinytex()
-
 ````
----
-
-## 3.Result
 
 
