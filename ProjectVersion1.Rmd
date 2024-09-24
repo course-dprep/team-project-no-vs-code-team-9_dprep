@@ -50,7 +50,7 @@ This research question is relevant because it allows filmmakers and marketers to
 ## 2.1 Data exploration
 
 This section explores the IMDb datasets and provide an overview of the datasets, the definitions of the variables and figures.
-```
+
 
 
 ```{r diagnostics, echo=FALSE, include = FALSE}
