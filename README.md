@@ -1,4 +1,4 @@
-# Evaluating the Impact of Number of Episode on TV Show Ratings
+# Evaluating the Impact of Number of Episodes on TV Show Ratings
 ![image](https://cdn.freebiesupply.com/images/large/2x/imdb-logo-transparent.png)
 
 ---
@@ -67,11 +67,11 @@ To explore these relationships, regression analysis will be used as the primary 
 ---
 
 ## Repository overview
-
+|-- LICENSE |-- ProjectVersion1.Rmd |-- README.html |-- README.md |-- team-project-no-vs-code-team-9_dprep.Rproj `-- teamproject.Rmd
 ---
 
 ## Running instructions (not yet done)
-This assingment requires R and Rstudio. This specific code was developed under R version 4.4.1. The software can be downloaded via the link: https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/ 
+This assignment requires R and Rstudio. This specific code was developed under R version 4.4.1. The software can be downloaded via the link: https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/ 
 
 ### Necessary libraries in R
 
