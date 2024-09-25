@@ -169,5 +169,6 @@ IMDb_dt = inner_join(test, titles, by = "tconst")
 IMDb_dt <-  IMDb_dt %>% mutate(popularity = ifelse(`Amount of votes` > 1000, 1, 0))
 IMDb_dt <- IMDb_dt %>% mutate(runtime = ifelse(runtimeMinutes > 50, "long", "short"))
 IMDb_dt <- IMDb_dt %>% mutate(new_vs_old = ifelse(startYear > 2015, "new", "old"))
+IMDb_dt <- IMDb_dt %>% mutate(episode_quantity = ifelse(`Number of episodes` > 25, "Many", "Few"))
 ```
 
