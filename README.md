@@ -80,13 +80,19 @@ To explore these relationships, regression analysis will be used as the primary 
 ## 4. Running instructions
 
 *Download and install R and RStudio*: [https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+
 *Download and install Git*:[https://tilburgsciencehub.com/topics/automation/version-control/start-git/git/](https://tilburgsciencehub.com/topics/automation/version-control/start-git/git/) 
+
 *Sign up on Github*:[https://github.com/](https://github.com/)
+
 *Install make*:[https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
   
 *Access to the datasets at*:
+
 title episode:[https://datasets.imdbws.com/title.episode.tsv.gz](https://datasets.imdbws.com/title.episode.tsv.gz)
+
 title.ratings:[https://datasets.imdbws.com/title.ratings.tsv.gz](https://datasets.imdbws.com/title.ratings.tsv.gz)
+
 title.basics:[https://datasets.imdbws.com/title.basics.tsv.gz](https://datasets.imdbws.com/title.basics.tsv.gz)
   
 ### Necessary libraries in R
