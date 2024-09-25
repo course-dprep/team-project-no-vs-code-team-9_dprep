@@ -57,16 +57,15 @@ Subsequently, we choose to work with the following variables:
 |               | runtimeMinutes | primary runtime of the title, in minutes            |
 |               | genres         | up to three genres associated with the title        |
 
-Access to the datasets at https://datasets.imdbws.com/ 
 
 ### 2.3 Research Method
 To explore these relationships, regression analysis will be used as the primary research method. This approach is ideal for quantifying the relationship between a dependent variable (TV show ratings) and an independent variable (number of episodes). By applying this method, we can measure how changes in the number of episodes impact ratings and determine the strength of this effect. Regression is especially well-suited for this research question because it reveals both the strength and direction of the relationship between the number of episodes and TV show ratings. It also strengthens the analysis by considering other variables, ensuring that the link between episode count and ratings isn’t influenced by unrelated factors.
 
-### Results
+### 2.4 Results
 
 ---
 
-## Repository overview
+## 3. Repository overview
 
 ```
 |-- LICENSE
@@ -78,9 +77,18 @@ To explore these relationships, regression analysis will be used as the primary 
 ```
 ---
 
-## Running instructions (not yet done)
-This assignment requires R and Rstudio. This specific code was developed under R version 4.4.1. The software can be downloaded via the link: https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/ 
+## 4. Running instructions
 
+*Download and install R and RStudio*: [link](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+*Download and install Git*:[link](https://tilburgsciencehub.com/topics/automation/version-control/start-git/git/) 
+*Sign up on Github*:[link](https://github.com/)
+*Install make*:[link](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make/)
+  
+*Access to the datasets at*:
+title episode:[link](https://datasets.imdbws.com/title.episode.tsv.gz)
+title.ratings:[link](https://datasets.imdbws.com/title.ratings.tsv.gz)
+title.basics:[link](https://datasets.imdbws.com/title.basics.tsv.gz)
+  
 ### Necessary libraries in R
 
 ```
@@ -93,6 +101,7 @@ library(car)
 library(data.table)
 library(readxl)
 ```
+
 ### Installing tinytex to knit the Rmarkdown
 
 ```
