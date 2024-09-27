@@ -78,6 +78,9 @@ knitr::kable(
 )
 
 ```
+```{r, echo = FALSE}
+boxplot(episode$episodeNumber, main = "Boxplot of the number of episodes")
+```
 
 ```{r diagnostic2, echo=FALSE, include =FALSE}
 # The 'title.ratings' dataset
