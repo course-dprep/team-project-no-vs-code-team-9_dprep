@@ -1,8 +1,10 @@
 #Data cleaning
 
-episode <- read_csv("../../episode.csv")
-ratings <- read_csv("../../ratings.csv")
-titles <- read_csv("../../titles.csv")
+dir.create('../../output')
+
+episode <- read_csv("../../data/episode.csv")
+ratings <- read_csv("../../data/ratings.csv")
+titles <- read_csv("../../data/titles.csv")
 
 #Cleaning the episode dataset
 episode = episode %>% filter(!is.na(episodeNumber))
@@ -25,3 +27,4 @@ IMDb_dt <- IMDb_dt %>% mutate(runtime = ifelse(runtimeMinutes > 50, "long", "sho
 IMDb_dt <- IMDb_dt %>% mutate(new_vs_old = ifelse(startYear > 2015, "new", "old"))
 IMDb_dt <- IMDb_dt %>% mutate(episode_quantity = ifelse(`Number of episodes` > 25, "Many", "Few"))
 
+write_csv(IMDb_dt, "../../output/IMDb_dt.csv")
