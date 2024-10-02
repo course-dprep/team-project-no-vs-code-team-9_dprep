@@ -32,6 +32,6 @@ episode <- datasets[[1]]
 ratings = datasets[[2]]
 titles <- datasets[[3]]
 
-write_csv(episode, "../../episode.csv")
-write_csv(ratings, "../../ratings.csv")
-write_csv(titles, "../../titles.csv")
+write_csv(episode, "../../data/episode.csv")
+write_csv(ratings, "../../data/ratings.csv")
+write_csv(titles, "../../data/titles.csv")
