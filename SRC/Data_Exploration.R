@@ -2,9 +2,9 @@
 
 #This section explores the IMDb datasets and provide an overview of the datasets,the definitions of the variables and figures.
 
-episode <- read_csv("../../episode.csv")
-ratings <- read_csv("../../ratings.csv")
-titles <- read_csv("../../titles.csv")
+episode <- read_csv("../../data/episode.csv")
+ratings <- read_csv("../../data/ratings.csv")
+titles <- read_csv("../../data/titles.csv")
 
 #The 'episode' dataset
 str(episode)
