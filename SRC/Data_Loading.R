@@ -1,26 +1,14 @@
 #Loading Data
 
+options(repos = c(CRAN = "https://cloud.r-project.org"))
 
 # Install packages
 
 install.packages("readr")
-install.packages("dplyr")   
-install.packages("ggplot2")   
-install.packages("stringr")
-install.packages("car")         
-install.packages("data.table")
-install.packages("readxl")
 
 # Open libraries
 
 library(readr)
-library(dplyr)
-library(ggplot2)
-library(stringr)
-library(car)
-library(data.table)
-library(readxl)
-
 
 #Create a folder for the data
 dir.create('../../data')

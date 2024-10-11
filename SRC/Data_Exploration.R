@@ -1,5 +1,10 @@
 #Data Exploration
 
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+
+library(readr)
+library(knitr) 
+
 #This section explores the IMDb datasets and provide an overview of the datasets,the definitions of the variables and figures.
 
 episode <- read_csv("../../data/episode.csv")

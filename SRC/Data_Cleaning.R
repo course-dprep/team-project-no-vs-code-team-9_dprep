@@ -1,3 +1,9 @@
+#Loading the data
+
+options(repos = c(CRAN = "https://cloud.r-project.org"))
+library(readr)
+library(dplyr)
+
 #Data cleaning
 
 dir.create('../../output')
