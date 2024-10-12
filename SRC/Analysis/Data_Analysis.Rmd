@@ -28,7 +28,7 @@ cleaned_data <- read_csv("../../../output/IMDb_dt.csv")
 
 
 ```{r include=FALSE}
-# Cleaning The Data
+# Filtering Data
 cleaned_data <- cleaned_data %>%
   rename(average_rating = 'The average rating') %>%
   rename(Number_of_episodes = 'Number of episodes') %>%
@@ -48,6 +48,7 @@ Descriptive_stats <- cleaned_data %>%
   num_episodes = n()
 )
 
+# Creating Descriptive Stats Table
 Descriptive_stats_table <- knitr::kable(Descriptive_stats, 
                                   caption = "Summary of Descriptive Statistics on Average Ratings",
                                   digits = 2,  # Format to 2 decimal places
@@ -68,11 +69,6 @@ For this analysis, we decided to use regression analysis to explore the relation
 ```{r echo=FALSE}
 basic_model <- lm(average_rating ~ Number_of_episodes, data = cleaned_data)
 summary_bm <- summary(basic_model)
-
-coefficient_summary_bm <- summary_bm$coefficients["Number_of_episodes", "Estimate"]
-t_value_bm <- summary_bm$coefficients["Number_of_episodes", "t value"]
-p_value_bm <- summary_bm$coefficients["Number_of_episodes", "Pr(>|t|)"]
-r_squared_bm <- summary_bm$r.squared
 
 # Extract key statistics
 coefficient_summary_bm <- summary_bm$coefficients["Number_of_episodes", "Estimate"]
@@ -133,15 +129,9 @@ In our basic model without any control variables, we observe that the number of 
 
 ## 2.3 Main Model With Control Variables
 
-
 ```{r echo=FALSE}
 main_model <- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
 summary_mmc <- summary(main_model)
-
-coefficient_summary_mmc <- summary_mmc$coefficients["Number_of_episodes", "Estimate"]
-t_value_bm <- summary_mmc$coefficients["Number_of_episodes", "t value"]
-p_value_bm <- summary_mmc$coefficients["Number_of_episodes", "Pr(>|t|)"]
-r_squared_bm <- summary_mmc$r.squared
 
 # Extract key statistics
 coefficient_summary_mmc <- summary_mmc$coefficients["Number_of_episodes", "Estimate"]
@@ -185,7 +175,6 @@ knitr::kable(stats_df_mmc, caption = "Additional Model Statistics", digits = 4, 
   kable_styling(latex_options = "hold_position")
 ```
 
-
 * popularity: "Amount of votes are over 1000
 * runtime: "Runtime in minutes is more than 50"
 * new_vs_old: "The start year is later than 2015"
@@ -197,11 +186,10 @@ In our main model with control variables, we observe that the coefficient for th
 
 # 3. Correlation Matrix of the Predictive Variables in Our Main Model
 ```{r echo=FALSE}
-#main_model_corr<- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
 correlation_matrix <- cor(model.matrix(main_model)[, -1])
 correlation_df <- as.data.frame(correlation_matrix)
 
-knitr::kable(correlation_df)
+knitr::kable(correlation_df, digits = 4)
 ```
 
 ### Correlation Matrix Analysis:
@@ -214,15 +202,15 @@ knitr::kable(correlation_df)
 Overall, the relationships between most variables are weak, indicating little to no strong linear correlation between them.The only meaningful correlation is between Number of episodes and episode quantityMany (0.217), which makes sense as it reflects the classification of episode quantity.
 
 # 4. Multicollinearity
-
 ```{r echo=FALSE}
-#main_model_multi <- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
 vif_values <- vif(main_model)
 vif_df <- as.data.frame(vif_values)
 colnames(vif_df) <- c("VIF")
 
 knitr::kable(vif_df)
 ```
+
 ### Multicollinearity Analysis:
+
 All VIF values are close to 1, indicating that there is no significant multicollinearity among the variables. This suggests that each variable provides unique information to the model, and none of them are overly redundant.
 
