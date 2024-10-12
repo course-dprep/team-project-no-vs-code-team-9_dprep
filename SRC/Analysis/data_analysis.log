@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.12)  12 OCT 2024 14:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.12)  12 OCT 2024 14:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**data_analysis.tex
-(./data_analysis.tex
+**Data_Analysis.tex
+(./Data_Analysis.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
 (/Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
@@ -462,12 +462,12 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count321
 \l__pdf_internal_box=\box74
-) (./data_analysis.aux
+) (./Data_Analysis.aux
 
 LaTeX Warning: Label `tab:unnamed-chunk-6' multiply defined.
 
 )
-\openout1 = `data_analysis.aux'.
+\openout1 = `Data_Analysis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
 LaTeX Font Info:    ... okay on input line 97.
@@ -567,10 +567,10 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<data_analysis_files/figure-latex/unnamed-chunk-7-1.pdf, id=4, 459.7175pt x 315.1775pt>
-File: data_analysis_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
-<use data_analysis_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: data_analysis_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 174.
+<Data_Analysis_files/figure-latex/unnamed-chunk-7-1.pdf, id=4, 459.7175pt x 315.1775pt>
+File: Data_Analysis_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
+<use Data_Analysis_files/figure-latex/unnamed-chunk-7-1.pdf>
+Package pdftex.def Info: Data_Analysis_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 174.
 (pdftex.def)             Requested size: 459.74442pt x 315.19595pt.
 
 
@@ -578,7 +578,7 @@ Package pdftex.def Info: data_analysis_files/figure-latex/unnamed-chunk-7-1.pdf 
 
 {/Users/kanayalalityahendra/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 
-[2 <./data_analysis_files/figure-latex/unnamed-chunk-7-1.pdf>]
+[2 <./Data_Analysis_files/figure-latex/unnamed-chunk-7-1.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 242.
 (/Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -616,7 +616,7 @@ Overfull \hbox (13.98201pt too wide) in paragraph at lines 297--297
 
 [3{/Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 
-[4] (./data_analysis.aux)
+[4] (./Data_Analysis.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
@@ -634,7 +634,7 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  89i,9n,93p,859b,508s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/kanayalalityahendra/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb>
-Output written on data_analysis.pdf (4 pages, 27505655 bytes).
+Output written on Data_Analysis.pdf (4 pages, 27505656 bytes).
 PDF statistics:
  118 PDF objects out of 1000 (max. 8388607)
  97 compressed objects within 1 object stream
