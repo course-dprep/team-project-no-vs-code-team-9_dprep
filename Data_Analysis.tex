@@ -1,0 +1,332 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Data Analysis Report - Team 9},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Data Analysis Report - Team 9}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\subsection{1. Summary of Descriptive Statistics on Average
+Ratings}\label{summary-of-descriptive-statistics-on-average-ratings}
+
+In this section, we present a summary of the descriptive statistics for
+the average ratings of TV shows. This analysis provides an overview of
+key metrics such as the mean, median, standard deviation, and range of
+ratings.
+
+\begin{longtable}[]{@{}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2899}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2029}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1594}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1594}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1884}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedleft
+mean\_average\_rating
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+median\_rating
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+min\_rating
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+max\_rating
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+num\_episodes
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+7.395257 & 7.5 & 1 & 10 & 729601 \\
+\end{longtable}
+
+\section{2. Regressing Rating on Number of
+Episode}\label{regressing-rating-on-number-of-episode}
+
+For this analysis, we decided to use regression analysis to explore the
+relationship between the number of episodes and the ratings of TV shows.
+By applying this method, we aim to determine whether the number of
+episodes significantly impacts a show's rating and to quantify the
+strength of this relationship. This approach will help us gain insights
+into how episode count influences audience engagement and reception.
+
+\subsubsection{2.1 Main Model Without Control
+Variables}\label{main-model-without-control-variables}
+
+\begin{longtable}[t]{lrrrr}
+\caption{\label{tab:unnamed-chunk-5}Model Summary: Number of Episodes on Average Rating}\\
+\toprule
+term & estimate & std.error & statistic & p.value\\
+\midrule
+(Intercept) & 7.3984538 & 0.0013401 & 5520.67262 & 0\\
+Number\_of\_episodes & -0.0000678 & 0.0000027 & -24.71563 & 0\\
+\bottomrule
+\end{longtable}
+
+\includegraphics{Data_Analysis_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\subsubsection{2.2 Regression Analysis
+Output}\label{regression-analysis-output}
+
+\begin{itemize}
+\tightlist
+\item
+  Coefficient for Number of episodes: -0.6819 x 10\^{}-5
+\item
+  T-value for Number of episodes: -24.62
+\item
+  P-value for Number of episodes: \textless2.2 x 10\^{}-16
+\item
+  R-squared: 0.0008274
+\end{itemize}
+
+In our basic model without any control variables, we can see that the
+number of episodes have a slightly negative effect on the average IMDb
+rating. With a P-value smaller than significance level of 5\%, we can
+conclude that the number of episodes has a negative effect. However this
+model is without any control variables, so we need to expand our model.
+
+\subsubsection{2.3 Main Model With Control
+Variables}\label{main-model-with-control-variables}
+
+\begin{longtable}[t]{lrrrr}
+\caption{\label{tab:unnamed-chunk-6}Model Summary: Number of Episodes on Average Rating}\\
+\toprule
+term & estimate & std.error & statistic & p.value\\
+\midrule
+(Intercept) & 7.4112214 & 0.0039325 & 1884.613686 & 0.0000000\\
+Number\_of\_episodes & -0.0000074 & 0.0000033 & -2.272281 & 0.0230700\\
+popularity & 0.6388453 & 0.0062147 & 102.796383 & 0.0000000\\
+runtimeshort & -0.0111033 & 0.0037682 & -2.946624 & 0.0032128\\
+new\_vs\_oldold & -0.0273492 & 0.0031471 & -8.690212 & 0.0000000\\
+\addlinespace
+episode\_quantityMany & -0.3178491 & 0.0047768 & -66.539811 & 0.0000000\\
+\bottomrule
+\end{longtable}
+
+\paragraph{Control Variable
+Definition:}\label{control-variable-definition}
+
+\begin{itemize}
+\tightlist
+\item
+  popularity: ``Amount of votes are over 1000
+\item
+  runtime: ``Runtime in minutes is more than 50''
+\item
+  new\_vs\_old: ``The start year is later than 2015''
+\item
+  episode\_quantity: ``Number of episodes is more than 25''
+\end{itemize}
+
+\subsubsection{2.4 Regression Analysis
+Output:}\label{regression-analysis-output-1}
+
+\begin{itemize}
+\tightlist
+\item
+  Coefficient for Number of episodes: -1.183 x 10\^{}-6
+\item
+  T-value for Number of episodes: -0.355
+\item
+  P-value for Number of episodes: 0.722
+\item
+  R-squared 0.0376
+\end{itemize}
+
+In our main model with control variables, we observe that the
+coefficient for the number of episodes is negative; however, it is not
+significant, as the p-value for this variable is 0.772, which is greater
+than 0.05. Looking at our control variables, we find that all of them
+are significant: Popularity (amount of votes over 1000) has a
+significant positive effect on the average rating. In contrast, runtime
+(runtime in minutes is more than 50) has a significant negative effect
+on the average rating. Additionally, being new (the start year is later
+than 2015) has a significant negative effect on the average rating, and
+having many episodes (more than 25 episodes) also negatively affects the
+average rating.
+
+\subsection{3. Correlation Matrix of the Predictive Variables in our
+Main
+Model}\label{correlation-matrix-of-the-predictive-variables-in-our-main-model}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2121}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1919}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1111}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1313}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1414}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2121}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Number\_of\_episodes
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+popularity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+runtimeshort
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+new\_vs\_oldold
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+episode\_quantityMany
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Number\_of\_episodes & 1.0000000 & -0.0173176 & 0.0222762 & -0.0402571 &
+0.2172219 \\
+popularity & -0.0173176 & 1.0000000 & -0.0013969 & -0.0385738 &
+-0.0608567 \\
+runtimeshort & 0.0222762 & -0.0013969 & 1.0000000 & 0.0486213 &
+-0.0101750 \\
+new\_vs\_oldold & -0.0402571 & -0.0385738 & 0.0486213 & 1.0000000 &
+0.0207109 \\
+episode\_quantityMany & 0.2172219 & -0.0608567 & -0.0101750 & 0.0207109
+& 1.0000000 \\
+\end{longtable}
+
+\subsubsection{Correlation Matrix
+Analysis:}\label{correlation-matrix-analysis}
+
+\begin{itemize}
+\tightlist
+\item
+  Number of episodes has a moderate positive correlation (0.217) with
+  episode quantityMany, indicating that shows with many episodes tend to
+  be classified as having ``many'' episodes.
+\item
+  Number of episodes has weak correlations with other variables like
+  popularity (-0.017), runtime (0.022), and new vs old (-0.040),
+  suggesting that the number of episodes is not strongly related to
+  these variables.
+\item
+  Popularity is weakly and negatively correlated with both new vs old
+  (-0.039) and episode quantityMany (-0.061), indicating that neither
+  older shows nor those with many episodes are strongly related to
+  popularity.
+\item
+  Runtime has a weak positive correlation (0.049) with new vs old,
+  meaning that older shows may have slightly longer runtimes.
+\end{itemize}
+
+Overall, the relationships between most variables are weak, indicating
+little to no strong linear correlation between them.The only meaningful
+correlation is between Number of episodes and episode quantityMany
+(0.217), which makes sense as it reflects the classification of episode
+quantity.
+
+\subsection{4. Multicollinearity}\label{multicollinearity}
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+& VIF \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Number\_of\_episodes & 1.052561 \\
+popularity & 1.005158 \\
+runtime & 1.003248 \\
+new\_vs\_old & 1.006478 \\
+episode\_quantity & 1.054251 \\
+\end{longtable}
+
+\subsubsection{Multicollinearity
+Analysis:}\label{multicollinearity-analysis}
+
+All VIF values are close to 1, indicating that there is no significant
+multicollinearity among the variables. This suggests that each variable
+provides unique information to the model, and none of them are overly
+redundant.
+
+\end{document}
