@@ -62,6 +62,9 @@ Subsequently, we choose to work with the following variables:
 To explore these relationships, regression analysis will be used as the primary research method. This approach is ideal for quantifying the relationship between a dependent variable (TV show ratings) and an independent variable (number of episodes). By applying this method, we can measure how changes in the number of episodes impact ratings and determine the strength of this effect. Regression is especially well-suited for this research question because it reveals both the strength and direction of the relationship between the number of episodes and TV show ratings. It also strengthens the analysis by considering other variables, ensuring that the link between episode count and ratings isn’t influenced by unrelated factors.
 
 ### 2.4 Results
+In our basic model without any control variables, we can see that the number of episodes have a slightly negative effect on the average IMDb rating With a P-value smaller than significance level of 5%, we can conclude that the number of episodes has a negative effect. However this model is without any control variables, so we need to expand our model.
+
+In our main model with control variables we can see that the coefficient of Number of episodes is negative. However this is not significant anymore, as the P-value for this variable is 0.772 which is larger than 0.05  If we look at our control variables we see that they all are significant:  Popularity has significant positive effect on the average rating. A short runtime has a significant negative effect on the average rating. Old has a significant negative effect on the average rating. Many episodes has a negative effect on the average rating.
 
 ---
 
@@ -69,11 +72,25 @@ To explore these relationships, regression analysis will be used as the primary 
 
 ```
 |-- LICENSE
-|-- ProjectVersion1.Rmd
-|-- README.html
+|-- Metadata.md
 |-- README.md
-|-- team-project-no-vs-code-team-9_dprep.Rproj
-|-- teamproject.Rmd
+|-- SRC
+|   |-- Analysis
+|   |   |-- Data_Analysis.Rmd
+|   |   |-- Data_analysis.R
+|   |   `-- makefile
+|   `-- Data preparation
+|       |-- Data Prep.Rmd
+|       |-- Data_Cleaning.R
+|       |-- Data_Exploration.R
+|       |-- Data_Loading.R
+|       `-- makefile
+|-- data
+|   |-- episode.csv
+|   |-- ratings.csv
+|   `-- titles.csv
+|-- output
+`-- team-project-no-vs-code-team-9_dprep.Rproj
 ```
 ---
 
