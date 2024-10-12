@@ -6,8 +6,9 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE, eval = TRUE)
 ```
+
 
 ```{r include=FALSE}
 # Load Packages
@@ -22,7 +23,7 @@ library(car)
 
 ```{r include=FALSE}
 # Importing Data Set
-cleaned_data <- read_csv("../../output/IMDb_dt.csv")
+cleaned_data <- read_csv("../../../output/IMDb_dt.csv")
 ```
 
 
@@ -34,11 +35,8 @@ cleaned_data <- cleaned_data %>%
   filter(!is.na(Number_of_episodes), !is.na(average_rating))
 ```
 
-
-## 1. Summary of Descriptive Statistics on Average Ratings
-
+# 1. Summary of Descriptive Statistics on Average Ratings
 In this section, we present a summary of the descriptive statistics for the average ratings of TV shows. This analysis provides an overview of key metrics such as the mean, median, standard deviation, and range of ratings.
-
 
 ```{r echo=FALSE}
 Descriptive_stats <- cleaned_data %>% 
@@ -50,71 +48,156 @@ Descriptive_stats <- cleaned_data %>%
   num_episodes = n()
 )
 
-kable(Descriptive_stats)
+Descriptive_stats_table <- knitr::kable(Descriptive_stats, 
+                                  caption = "Summary of Descriptive Statistics on Average Ratings",
+                                  digits = 2,  # Format to 2 decimal places
+                                  align = 'c',  # Center-align columns
+                                  format = "latex")  %>%
+                       kable_styling(latex_options = "hold_position") 
+
+# Print the table in the RMarkdown
+Descriptive_stats_table
 ```
 
-# 2. Regressing Rating on Number of Episode
 
+# 2. Regressing Rating on Number of Episodes
 For this analysis, we decided to use regression analysis to explore the relationship between the number of episodes and the ratings of TV shows. By applying this method, we aim to determine whether the number of episodes significantly impacts a show's rating and to quantify the strength of this relationship. This approach will help us gain insights into how episode count influences audience engagement and reception.
 
-### 2.1 Main Model Without Control Variables
 
+## 2.1 Main Model Without Control Variables
 ```{r echo=FALSE}
 basic_model <- lm(average_rating ~ Number_of_episodes, data = cleaned_data)
+summary_bm <- summary(basic_model)
 
-tidy_model <- tidy(basic_model)
+coefficient_summary_bm <- summary_bm$coefficients["Number_of_episodes", "Estimate"]
+t_value_bm <- summary_bm$coefficients["Number_of_episodes", "t value"]
+p_value_bm <- summary_bm$coefficients["Number_of_episodes", "Pr(>|t|)"]
+r_squared_bm <- summary_bm$r.squared
 
-kable(tidy_model, caption = "Model Summary: Number of Episodes on Average Rating") %>%
-  kable_styling(full_width = F)  
+# Extract key statistics
+coefficient_summary_bm <- summary_bm$coefficients["Number_of_episodes", "Estimate"]
+t_value_bm <- summary_bm$coefficients["Number_of_episodes", "t value"]
+p_value_bm <- summary_bm$coefficients["Number_of_episodes", "Pr(>|t|)"]
+r_squared_bm <- summary_bm$r.squared
+adj_r_squared_bm <- summary_bm$adj.r.squared
+f_statistic_bm <- summary_bm$fstatistic[1]
+f_statistic_pval <- pf(summary_bm$fstatistic[1], summary_bm$fstatistic[2], summary_bm$fstatistic[3], lower.tail = FALSE)
 
+# Create a tidy summary of the model
+tidy_model <- broom::tidy(summary_bm)
+
+# Create a table of the regression results
+model_summary_table <- knitr::kable(tidy_model, 
+                              caption = "Regression Result: Model without Control Variables",
+                              digits = 4,  # Format to 4 decimal places
+                              align = 'c',  # Center-align columns
+                              format = "latex")   %>%
+                       kable_styling(latex_options = "hold_position") 
+
+# Print the model summary table
+model_summary_table
+
+# Create a data frame for the additional statistics
+stats_df <- tibble::tibble(
+  Statistic = c("Coefficient for Number of episodes", "T-value for Number of episodes", 
+                "P-value for Number of episodes", "R-squared", 
+                "Adjusted R-squared", "F-statistic", "P-value for F-statistic"),
+  Value = c(round(coefficient_summary_bm, 6), round(t_value_bm, 4), 
+            round(p_value_bm, 6), round(r_squared_bm, 6), 
+            round(adj_r_squared_bm, 6), round(f_statistic_bm, 4), 
+            round(f_statistic_pval, 6))
+)
+
+# Print the additional statistics as a table
+knitr::kable(stats_df, caption = "Additional Model Statistics", digits = 4, align = 'c', format = "latex") %>%
+  kable_styling(latex_options = "hold_position")
+```
+
+
+```{r echo=FALSE}
 ## Plot of Basic Model without Control Variables
 ggplot(cleaned_data, aes(x = Number_of_episodes, y = average_rating)) +
   geom_point() + geom_smooth(method = "lm") + labs(
-    title = "Regression of Average Ratings over The number of episodes",
+    title = "Scatter Plot: Ratings vs. Episodes",
     x = "Number of episodes",
     y = "Average Rating"
   )
 ```
 
-### 2.2 Regression Analysis Output
-* Coefficient for Number of episodes: -0.6819 x 10^-5
-* T-value for Number of episodes: -24.62
-* P-value for Number of episodes: <2.2 x 10^-16
-* R-squared: 0.0008274
 
-In our basic model without any control variables, we can see that the number of episodes have a slightly negative effect on the average IMDb rating.
-With a P-value smaller than significance level of 5%, we can conclude that the number of episodes has a negative effect.
-However this model is without any control variables, so we need to expand our model.
+## 2.2 Regression Output Analysis
 
-### 2.3 Main Model With Control Variables
+In our basic model without any control variables, we observe that the number of episodes has a slightly negative effect on the average IMDb rating. With a p-value smaller than the 5% significance level, we can conclude that the number of episodes has a statistically significant negative effect. However, this model does not include any control variables, so further analysis is needed to expand and refine our model.
+
+\newpage
+
+## 2.3 Main Model With Control Variables
+
+
 ```{r echo=FALSE}
 main_model <- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
+summary_mmc <- summary(main_model)
 
-tidy_model <- tidy(main_model)
+coefficient_summary_mmc <- summary_mmc$coefficients["Number_of_episodes", "Estimate"]
+t_value_bm <- summary_mmc$coefficients["Number_of_episodes", "t value"]
+p_value_bm <- summary_mmc$coefficients["Number_of_episodes", "Pr(>|t|)"]
+r_squared_bm <- summary_mmc$r.squared
 
-kable(tidy_model, caption = "Model Summary: Number of Episodes on Average Rating") %>%
-  kable_styling(full_width = F)  
+# Extract key statistics
+coefficient_summary_mmc <- summary_mmc$coefficients["Number_of_episodes", "Estimate"]
+t_value_mmc <- summary_mmc$coefficients["Number_of_episodes", "t value"]
+p_value_mmc <- summary_mmc$coefficients["Number_of_episodes", "Pr(>|t|)"]
+r_squared_mmc <- summary_mmc$r.squared
+adj_r_squared_mmc <- summary_mmc$adj.r.squared
+f_statistic_mmc <- summary_mmc$fstatistic[1]
+f_statistic_pval_mmc <- pf(summary_mmc$fstatistic[1], summary_mmc$fstatistic[2], summary_mmc$fstatistic[3], lower.tail = FALSE)
+
+# Create a tidy summary of the model
+tidy_model_mmc <- broom::tidy(summary_mmc)
+
+# Create a table of the regression results
+model_summary_table_mmc <- knitr::kable(tidy_model_mmc, 
+                              caption = "Regression Result: Model with Control Variables",
+                              digits = 4,  # Format to 4 decimal places
+                              align = 'c',  # Center-align columns
+                              format = "latex")   %>%
+                       kable_styling(latex_options = "hold_position") 
+
+# Print the model summary table
+model_summary_table_mmc
 ```
 
-#### Control Variable Definition:
+
+```{r echo=FALSE}
+# Create a data frame for the additional statistics
+stats_df_mmc <- tibble::tibble(
+  Statistic = c("Coefficient for Number of episodes", "T-value for Number of episodes", 
+                "P-value for Number of episodes", "R-squared", 
+                "Adjusted R-squared", "F-statistic", "P-value for F-statistic"),
+  Value = c(round(coefficient_summary_mmc, 6), round(t_value_mmc, 4), 
+            round(p_value_mmc, 6), round(r_squared_mmc, 6), 
+            round(adj_r_squared_mmc, 6), round(f_statistic_mmc, 4), 
+            round(f_statistic_pval_mmc, 6))
+)
+
+# Print the additional statistics as a table
+knitr::kable(stats_df_mmc, caption = "Additional Model Statistics", digits = 4, align = 'c', format = "latex") %>%
+  kable_styling(latex_options = "hold_position")
+```
+
+
 * popularity: "Amount of votes are over 1000
 * runtime: "Runtime in minutes is more than 50"
 * new_vs_old: "The start year is later than 2015"
 * episode_quantity: "Number of episodes is more than 25"
 
-
-### 2.4 Regression Analysis Output:
-* Coefficient for Number of episodes: -1.183 x 10^-6
-* T-value for Number of episodes: -0.355
-* P-value for Number of episodes: 0.722
-* R-squared 0.0376
-
+## 2.4 Regression Output Analysis
 In our main model with control variables, we observe that the coefficient for the number of episodes is negative; however, it is not significant, as the p-value for this variable is 0.772, which is greater than 0.05. Looking at our control variables, we find that all of them are significant: Popularity (amount of votes over 1000) has a significant positive effect on the average rating. In contrast, runtime (runtime in minutes is more than 50) has a significant negative effect on the average rating. Additionally, being new (the start year is later than 2015) has a significant negative effect on the average rating, and having many episodes (more than 25 episodes) also negatively affects the average rating.
 
 
-## 3. Correlation Matrix of the Predictive Variables in our Main Model 
+# 3. Correlation Matrix of the Predictive Variables in Our Main Model
 ```{r echo=FALSE}
-main_model_corr<- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
+#main_model_corr<- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
 correlation_matrix <- cor(model.matrix(main_model)[, -1])
 correlation_df <- as.data.frame(correlation_matrix)
 
@@ -130,9 +213,10 @@ knitr::kable(correlation_df)
 
 Overall, the relationships between most variables are weak, indicating little to no strong linear correlation between them.The only meaningful correlation is between Number of episodes and episode quantityMany (0.217), which makes sense as it reflects the classification of episode quantity.
 
-## 4. Multicollinearity
+# 4. Multicollinearity
+
 ```{r echo=FALSE}
-main_model_multi <- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
+#main_model_multi <- lm(average_rating ~ Number_of_episodes + popularity + runtime + new_vs_old + episode_quantity , data = cleaned_data)
 vif_values <- vif(main_model)
 vif_df <- as.data.frame(vif_values)
 colnames(vif_df) <- c("VIF")
