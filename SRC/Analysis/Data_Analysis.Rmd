@@ -176,9 +176,9 @@ knitr::kable(stats_df_mmc, caption = "Additional Model Statistics", digits = 4, 
 ```
 
 * popularity: "Amount of votes are over 1000
-* runtime: "Runtime in minutes is more than 50"
-* new_vs_old: "The start year is later than 2015"
-* episode_quantity: "Number of episodes is more than 25"
+* runtimeshort: "Runtime in minutes is less than 50"
+* new_vs_oldold: "The start year is earlier than 2015"
+* episode_quantityMany: "Number of episodes is more than 25"
 
 ## 2.4 Regression Output Analysis
 In our main model with control variables, we observe that the coefficient for the number of episodes is negative; however, it is not significant, as the p-value for this variable is 0.772, which is greater than 0.05. Looking at our control variables, we find that all of them are significant: Popularity (amount of votes over 1000) has a significant positive effect on the average rating. In contrast, runtime (runtime in minutes is more than 50) has a significant negative effect on the average rating. Additionally, being new (the start year is later than 2015) has a significant negative effect on the average rating, and having many episodes (more than 25 episodes) also negatively affects the average rating.
